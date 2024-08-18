@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-echo-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask-echo
+  template:
+    metadata:
+      labels:
+        app: flask-echo
+    spec:
+      containers:
+      - name: flask-echo
+        image: thatthep/flask-echo:main
+        ports:
+        - containerPort: 5000
